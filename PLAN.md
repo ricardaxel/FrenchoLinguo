@@ -14,7 +14,7 @@ TurkoLinguo is the template. Most of it is language-independent and can be copie
 
 | Part | Reuse | Notes |
 |---|---|---|
-| App shell (Expo SDK 57, RN 0.86, TS, Expo Router) | Upgrade to SDK 58 | Screens: home, session, grammar, checkpoint, talk. Target device: **iPhone** (see [docs/IOS.md](docs/IOS.md)) |
+| App shell (Expo SDK 57, RN 0.86, TS, Expo Router) | Upgrade to SDK 58 | Screens: home, session, grammar, checkpoint, talk. Target device: **iPhone**: native route in [docs/IOS.md](docs/IOS.md), free web route (Home Screen web app) in [docs/WEB.md](docs/WEB.md) |
 | `session/` (SessionRunner, CardView, ItemView, grade.ts) | As is | Exercise types are generic |
 | `progress/`, `review/` (ts-fsrs) | As is | Vocabulary + grammar-pattern cards |
 | `talk/` + docs/TALK_TASKS.md | As is | Partner card frame rewritten in French |

@@ -14,13 +14,13 @@ TurkoLinguo is the template. Most of it is language-independent and can be copie
 
 | Part | Reuse | Notes |
 |---|---|---|
-| App shell (Expo SDK 57, RN 0.86, TS, Expo Router) | As is | Screens: home, session, grammar, checkpoint, talk |
+| App shell (Expo SDK 57, RN 0.86, TS, Expo Router) | Upgrade to SDK 58 | Screens: home, session, grammar, checkpoint, talk. Target device: **iPhone** (see [docs/IOS.md](docs/IOS.md)) |
 | `session/` (SessionRunner, CardView, ItemView, grade.ts) | As is | Exercise types are generic |
 | `progress/`, `review/` (ts-fsrs) | As is | Vocabulary + grammar-pattern cards |
 | `talk/` + docs/TALK_TASKS.md | As is | Partner card frame rewritten in French |
 | Content pipeline (YAML → validator → content.json) | Adapt | Schema keeps its shape; morphology part changes |
 | `scripts/validate_content.py` | Adapt | NFC check, "used before taught" check, French typography check |
-| CI + signed APK release workflow | As is | Rename package id |
+| CI + signed APK release workflow | As is, + EAS iOS workflow | Rename package id; add `release-ios.yml` (EAS Build → TestFlight); Android stays a secondary target |
 | `engine/` (turkish.ts, morph.ts, check.ts, feedback.ts) | **Rewrite** | French needs a different engine (§3) |
 | Curriculum, vocabulary, sentences, media | **New** | French content written from scratch |
 
@@ -69,11 +69,11 @@ Same model: 8-word packs placed just before the lesson that uses them, each word
 
 1. **M0 — Setup (now):** git repo, this plan.
 2. **M1 — Research & design docs:** RESEARCH.md, CURRICULUM.md (A1), VOCABULARY.md, CONTENT_FORMAT.md adapted.
-3. **M2 — Skeleton:** copy the TurkoLinguo app, pipeline and CI; rename (package id, title, `fr-FR` TTS); strip Turkish content and engine; build passes with an empty course.
+3. **M2 — Skeleton:** copy the TurkoLinguo app, pipeline and CI; rename (package id, title, `fr-FR` TTS); strip Turkish content and engine; **upgrade to SDK 58** (the App Store Expo Go runs only SDK 58); build passes with an empty course and runs on the **iPhone via Expo Go**. Steps M2.1–M2.6 in [docs/IOS.md §7](docs/IOS.md).
 4. **M3 — French engine:** conjugation, agreement, elision, answer checking + feedback, with tests.
 5. **M4 — Vertical slice:** one full lesson (e.g. *être* + subject pronouns) with grammar, Learn/Practise items, a pack, review cards, a talk task; playable on the phone through Expo Go.
 6. **M5 — A1 content:** units 0–6 + checkpoints + packs, written in parallel per unit, each reviewed by a French-expert pass (as in TurkoLinguo).
-7. **M6 — Audio & polish:** Lingua Libre / Tatoeba audio coverage, signed APK release.
+7. **M6 — Audio & polish:** Lingua Libre / Tatoeba audio coverage, **TestFlight build (iOS)** + signed APK (Android). The Apple Developer Program ($99/yr) starts here, not earlier.
 8. **M7 — A2.**
 
 ## 7. Open decisions
@@ -82,3 +82,10 @@ Same model: 8-word packs placed just before the lesson that uses them, each word
 - **Variety of French:** metropolitan France (default, used for now); show Québec/Belgian/Swiss variants as notes?
 - **Shared code:** copy the TurkoLinguo app (simplest, chosen for now) vs. extracting a shared core both apps use.
 - **Licence / business model:** same question as TurkoLinguo (CC BY-SA content means share-alike content).
+- **iPhone** (details in [docs/IOS.md §8](docs/IOS.md)):
+  - when to buy the Apple Developer Program (recommended: M5/M6);
+  - the home-screen name ("FrenchoLinguo" may be cut off; "Frencho"?);
+  - iPad support (recommended: off);
+  - the accent bar layout;
+  - beta for other learners vs straight to the App Store;
+  - where to host the privacy policy.

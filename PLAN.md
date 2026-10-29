@@ -4,7 +4,7 @@ Goal: a mobile app for learning French in short sessions (3–10 min). Unlike Du
 It follows the same approach as [TurkoLinguo](../TurkoLinguo): rule card → worked examples → practice with
 *explained* feedback → FSRS spaced review, plus vocabulary theme packs and optional talk tasks with a native speaker.
 
-Base language: **English** (same as TurkoLinguo; to confirm, see §7).
+Base language: **English** (decided 2026-10-29). Target variety: metropolitan (France) French.
 
 ---
 
@@ -78,7 +78,7 @@ Same model: 8-word packs placed just before the lesson that uses them, each word
 
 ## 7. Open decisions
 
-- **Learner's base language:** English (default) or another?
-- **Variety of French:** metropolitan France by default; Québec/Belgian/Swiss variants shown as notes?
+- ~~Learner's base language~~ → **English** (decided 2026-10-29).
+- **Variety of French:** metropolitan France (default, used for now); show Québec/Belgian/Swiss variants as notes?
 - **Shared code:** copy the TurkoLinguo app (simplest, chosen for now) vs. extracting a shared core both apps use.
 - **Licence / business model:** same question as TurkoLinguo (CC BY-SA content means share-alike content).

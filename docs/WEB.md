@@ -7,13 +7,13 @@ Related: [IOS.md](IOS.md) covers the native iPhone route (Expo Go, EAS, TestFlig
 Short version:
 
 - Export the Expo Router app as a static website (`npx expo export -p web`).
-- Host it free on **GitHub Pages**, deployed by GitHub Actions on every push to `main`.
+- Host it free on **GitHub Pages**, deployed by GitHub Actions on every push to `master`.
 - On the iPhone, open the site in Safari, then Share → **Add to Home Screen**. With a web app manifest it opens full screen, without the Safari UI.
 - Progress stays on the phone in `localStorage` (AsyncStorage's web backend).
 
 | Item | Cost |
 |---|---|
-| GitHub Pages hosting | free for a **public** repo. A private repo needs a paid GitHub plan; alternatives: Cloudflare Pages or Netlify (free), or EAS Hosting (free preview URLs; custom domains only on paid plans) |
+| GitHub Pages hosting (**chosen**, 2026-10-29) | free; the repo must be **public** (Pages on a private repo needs a paid GitHub plan) |
 | Custom domain (optional) | ~€10/yr |
 | Apple account | not needed |
 
@@ -74,7 +74,7 @@ name: Deploy web
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -270,7 +270,7 @@ The Jest tests and `ci.yml` stay the same. The web export runs in `deploy-web.ym
 **M2 — Skeleton:**
 
 1. **M2.7** `npm run web` works with the empty course. Then `npx expo export -p web` with `output: "single"`, and `npx serve dist` on the PC.
-2. **M2.8** Add `deploy-web.yml` and turn on GitHub Pages. This decides public vs private repo, or Cloudflare/Netlify instead.
+2. **M2.8** ✅ Public repo created: `github.com/ricardaxel/FrenchoLinguo` (default branch `master`). Remaining: add `deploy-web.yml` (it triggers on `master`), then set Settings → Pages → Source to **GitHub Actions**. The site will be at `https://ricardaxel.github.io/FrenchoLinguo/`.
 
 **M4 — Vertical slice:**
 
@@ -285,7 +285,7 @@ When the web version's limits start to hurt, switch to the native route in [IOS.
 
 ## 7. Open decisions
 
-1. **Hosting:** GitHub Pages (needs a public repo, or a paid GitHub plan), Cloudflare Pages / Netlify (private repo fine, real SPA rewrites), or EAS Hosting.
+1. ~~**Hosting**~~ → **GitHub Pages, public repo** (decided 2026-10-29). Repo: `github.com/ricardaxel/FrenchoLinguo` (public), so the URL matches `baseUrl: "/FrenchoLinguo"`. Cloudflare Pages or Netlify stay the fallback if the repo ever has to be private.
 2. **`single` vs `static` output:** `single` for M2 (recommended); `static` later if per-page HTML is useful.
 3. **Custom domain:** whether to have one, and its name. With one, `baseUrl` isn't needed.
 4. **Web as the main iPhone route until when:** for example until A1 is complete, then decide on the $99 native app.
